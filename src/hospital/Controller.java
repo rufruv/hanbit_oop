@@ -1,13 +1,15 @@
 package hospital;
 
 import java.util.Scanner;
+import test.Bmi;
 
 public class Controller {
 	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		System.out.printf("역할은? (의사:1, 간호사:2, 환자:3)\n" + "이름, 주민번호(800101-1), 이메일, 휴대폰\n");
-		/*
+		Bmi bmi = new Bmi();
+		System.out.println("당신은 누구입니까? (의사:1, 간호사:2, 환자:3)");
+		/* 아래처럼 출력되도록 하세요
 		 * [의사] 한석규(남) 36세, han@test.com, 010-1234-5678 
 		 * [간호사] 박신혜(여) 25세, park@test.com, 010-1234-5678 
 		 * [환자] 홍길동(남) 15세, hong@test.com, 010-1234-5678
@@ -16,40 +18,34 @@ public class Controller {
 		switch (selector) {
 		case 1:
 			Doctors doc = new Doctors();
-			System.out.println("당신의 이름은 무엇입니까?");
+			System.out.println("'이름, 주민번호(앞자리 7자리까지), 이메일, 휴대폰번호?");
 			doc.docName = s.next();
-			System.out.println("당신의 주민번호는 무엇입니까?");
-			doc.docGen= s.next();
-			System.out.println("당신의 이메일은 무엇입니까?");
+			doc.docGen = s.next();
 			doc.docEmail = s.next();
-			System.out.println("당신의 휴대폰번호는 무엇입니까?");
 			doc.docPhone = s.next();
-			System.out.printf("[의사] %s(%s), %s, %s ", doc.docName, doc.getGender(doc.docGen), doc.docEmail, doc.docPhone );
-			return;
+			System.out.printf("[의사] %s(%s) %d%s, %s, %s ", 
+					doc.docName, doc.getGender(doc.docGen), doc.getAge(doc.docGen), "세", doc.docEmail, doc.docPhone );
+			break;
 		case 2:
 			Nurses nur = new Nurses();
-			System.out.println("당신의 이름은 무엇입니까?");
+			System.out.println("이름, 주민번호(앞자리 7자리까지), 이메일, 휴대폰번호?");
 			nur.nurName = s.next();
-			System.out.println("당신의 주민번호는 무엇입니까?");
 			nur.nurGen = s.next();
-			System.out.println("당신의 이메일은 무엇입니까?");
 			nur.nurEmail = s.next();
-			System.out.println("당신의 휴대폰번호는 무엇입니까?");
 			nur.nurPhone = s.next();
-			System.out.printf("[간호사] %s(%s), %s, %s ", nur.nurName, nur.getGender(nur.nurGen), nur.nurEmail, nur.nurPhone );
-			return;
+			System.out.printf("[간호사] %s(%s) %d%s, %s, %s ", 
+					nur.nurName, nur.getGender(nur.nurGen), nur.getAge(nur.nurGen), "세", nur.nurEmail, nur.nurPhone );
+			break;
 		case 3:
 			Patients pat = new Patients();
-			System.out.println("당신의 이름은 무엇입니까?");
+			System.out.println("이름, 주민번호(앞자리 7자리까지), 이메일, 휴대폰번호?");
 			pat.patName = s.next();
-			System.out.println("당신의 주민번호는 무엇입니까?");
-			pat.patGen = s.next();
-			System.out.println("당신의 이메일은 무엇입니까?");
+			pat.patJumin = s.next();
 			pat.patEmail = s.next();
-			System.out.println("당신의 휴대폰번호는 무엇입니까?");
 			pat.patPhone = s.next();
-			System.out.printf("[간호사] %s(%s), %s, %s ", pat.patName, pat.getGender(pat.patGen), pat.patEmail, pat.patPhone );
-			return;
+			System.out.printf("[간호사] %s(%s) %d%s, %s, %s ", 
+					pat.patName, pat.getGender(pat.patJumin), pat.getAge(pat.patJumin), "세", pat.patEmail, pat.patPhone );
+			break;
 		}
 	}
 }
