@@ -1,13 +1,11 @@
 package hospital;
 
 import java.util.Scanner;
-import test.Bmi;
 
 public class Controller {
-	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		Bmi bmi = new Bmi();
+        String ssn = "";
 		System.out.println("당신은 누구입니까? (의사:1, 간호사:2, 환자:3)");
 		/* 아래처럼 출력되도록 하세요
 		 * [의사] 한석규(남) 36세, han@test.com, 010-1234-5678 
@@ -19,32 +17,35 @@ public class Controller {
 		case 1:
 			Doctors doc = new Doctors();
 			System.out.println("'이름, 주민번호(앞자리 7자리까지), 이메일, 휴대폰번호?");
-			doc.docName = s.next();
-			doc.docGen = s.next();
-			doc.docEmail = s.next();
-			doc.docPhone = s.next();
-			System.out.printf("[의사] %s(%s) %d%s, %s, %s ", 
-					doc.docName, doc.getGender(doc.docGen), doc.getAge(doc.docGen), "세", doc.docEmail, doc.docPhone );
+			doc.setDocName(s.next());
+			ssn = s.next();
+			doc.calcDocGen(ssn);
+			doc.setDocEmail(s.next());
+			doc.setDocPhone(s.next());
+			System.out.printf("[의사] %s(%s) %d세, %s, %s ", 
+					doc.getDocName(), doc.getDocGen(), doc.getAge(ssn), doc.getDocEmail(), doc.getDocPhone());
 			break;
 		case 2:
 			Nurses nur = new Nurses();
 			System.out.println("이름, 주민번호(앞자리 7자리까지), 이메일, 휴대폰번호?");
-			nur.nurName = s.next();
-			nur.nurGen = s.next();
-			nur.nurEmail = s.next();
-			nur.nurPhone = s.next();
-			System.out.printf("[간호사] %s(%s) %d%s, %s, %s ", 
-					nur.nurName, nur.getGender(nur.nurGen), nur.getAge(nur.nurGen), "세", nur.nurEmail, nur.nurPhone );
+			nur.setNurName(s.next());
+			ssn = s.next();
+			nur.calcNurGen(ssn);
+			nur.setNurEmail(s.next());
+			nur.setNurPhone(s.next());
+			System.out.printf("[간호사] %s(%s) %d세, %s, %s ", 
+					nur.getNurName(), nur.getNurGen(), nur.getAge(ssn), nur.getNurEmail(), nur.getNurPhone());
 			break;
 		case 3:
 			Patients pat = new Patients();
 			System.out.println("이름, 주민번호(앞자리 7자리까지), 이메일, 휴대폰번호?");
-			pat.patName = s.next();
-			pat.patJumin = s.next();
-			pat.patEmail = s.next();
-			pat.patPhone = s.next();
-			System.out.printf("[간호사] %s(%s) %d%s, %s, %s ", 
-					pat.patName, pat.getGender(pat.patJumin), pat.getAge(pat.patJumin), "세", pat.patEmail, pat.patPhone );
+			pat.setPatName(s.next());
+			pat.setPatJumin(s.next());
+			pat.calcPatGen();
+			pat.setPatEmail(s.next());
+			pat.setPatPhone(s.next());
+			System.out.printf("[간호사] %s(%s) %d세, %s, %s ", 
+					pat.getPatName(), pat.getPatGen(), pat.getAge(), pat.getPatEmail(), pat.getPatPhone());
 			break;
 		}
 	}
