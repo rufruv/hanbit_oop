@@ -1,15 +1,15 @@
 package bank;
 
-import java.nio.channels.NonWritableChannelException;
 import java.util.Calendar;
+import util.RandomGenerator;
 
 public class Account {
 	public final static String BANK_NAME = "한빛뱅크";
 	private int money, accountNo ;
-	private String uid, accountType, createDate, bankName ;
+	private String uid, accountType, createDate ;
 	
 	public Account(String uid, String accountType, int money){  //6자리 랜덤숫자
-		this.accountNo = createAccountNo() ; 
+		this.accountNo = RandomGenerator.getRandomNum(100000,999999); ; 
 		this.createDate = today(); 
 		this.uid = uid;
 		this.accountType= accountType;
@@ -17,13 +17,17 @@ public class Account {
 	}
 	
 	public String today(){
-		String today = "";
-		StringBuffer sb = new StringBuffer();
-		Calendar now = Calendar.getInstance();
+		return Calendar.getInstance().get(Calendar.YEAR)+"년"
+				+ Calendar.getInstance().get(Calendar.MONTH)+1+"월"
+				+ Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+"일" ;
 		
-		int yy = now.get(now.YEAR);
-		int mm = now.get(now.MONTH)+1;
-		int dd = now.get(now.DAY_OF_MONTH);
+		/*String today = "";
+		StringBuffer sb = new StringBuffer();
+		Calendar now = Calendar.getInstance(); // class가 직접 호출하는 메소드! (class method) / memory를 점유하지 않음
+		
+		int yy = now.get(Calendar.YEAR);       
+		int mm = now.get(Calendar.MONTH)+1;
+		int dd = now.get(Calendar.DAY_OF_MONTH);
 		 
 		sb.append(yy);
 		sb.append("년 ");
@@ -33,16 +37,15 @@ public class Account {
 		sb.append("일");
 		today = sb.toString();
 		
-		return today;
+		return today;*/
 	}
-	public int createAccountNo(){
-		int accountNum = 0;
-		int max = 999999;
-		int min = 100000;
-		accountNum = (int)(Math.random()*(max-min+1)+ min);
-		// 로직을 짜세요
-		// math.random... 100,000~999,999
-		return accountNum;
+	
+	public String getUid(){
+		return uid;
+	}
+	
+	public int getAccountNo(){
+		return accountNo;
 	}
 	
 	public String getAccountType(){
@@ -52,24 +55,16 @@ public class Account {
 	public int getMoney(){
 		return money;
 	}
-	/*public void setMoney(int money){
-		this.money = money;
-	}
-	public int getMoney(){
-		return money;
-	}
 	
-	public void setUid(String uid){
-		this.uid = uid;
+	public String getCreateDate(){
+		return createDate;
 	}
-	public String getUid(){
-		return uid;
+	public void deposit(int money){
+		this.money+=money;
 	}
-	
-	public void accountType(String accountType){
-		this.accountNo = accountNo;
+	public void withdraw(int money){
+		
 	}
-	public String accountType(){
-		return accountType;
-	}*/
 }
+
+

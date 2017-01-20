@@ -2,89 +2,82 @@ package test;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Controller {
 	public static void main(String[] args) { // local variable 반드시 initialize
 		Scanner s = new Scanner(System.in);
 		int i = 0 ;
-		String ssn= "";                      // local variable
+		String ssn = "";                      // local variable
 		String gender= "";     
 		String bmiResult = "";
 		String tempUid = "";
-		Member member = new Member();                
+		Member member = null;                
 		while(true){
-			System.out.println("어떤 작업을 원하세요? 1.회원등록  2.BMI측정 3.로또 4.성적표 0.종료");
-			int selector = s.nextInt();
-			switch (selector) {
-			case 0: return;
+			/*System.out.println("어떤 작업을 원하세요? 1.회원등록  2.BMI측정 3.로또 4.성적표 0.종료");*/
+			;
+			/*int selector = s.nextInt();*/
+			switch (JOptionPane.showInputDialog("원하시는 작업을 입력하세요!\n1.회원등록  2.BMI측정 3.로또 4.성적표 0.종료")){
+			case "0": return;
 				
-			case 1:
-				System.out.println("아이디, 이름, 주민번호(앞자리7자리까지)?");
-				member.setUid(s.next());
-				member.setName(s.next());
+			case "1":
+				member = new Member();
+				member.setUid(JOptionPane.showInputDialog("아이디"));
+				member.setName(JOptionPane.showInputDialog("이름"));
 				// Input SSN
 				while (true) {                     // validation 유효성 체크
-					System.out.println("주민번호: ");
-					ssn = s.next();
+					ssn = JOptionPane.showInputDialog("주민번호 (앞자리 7자리까지만 입력하세요)");
 					char ch = ssn.charAt(7);
 					if (ch == '0' || ch == '7' || ch == '8' || ch == '9') {
-						System.out.println("다시 입력하세요");
+						JOptionPane.showMessageDialog(null, "주민번호가 잘못 입력되었습니다. 다시 입력해주세요.");
 					} else {
 						break;
 					}
 				}
 				member.setSsn(ssn);
-				// [2] calcGender를 standardAlone method로 
-				gender = member.calcGender(ssn);
-				System.out.printf("%s(%s)\n", member.getName(), gender );
-				// 한석규(남)
-				
-			case 2:
+				JOptionPane.showMessageDialog(null, member.getName()+"("+member.calcGender(ssn)+")");				// 한석규(남)
+				break ;
+			case "2":
 				Bmi bmi = new Bmi() ;
 				while(true){
-					System.out.println("아이디?");
-					tempUid = s.next();
+					tempUid = JOptionPane.showInputDialog("아이디");
 					if(member.getUid().equals(tempUid)){
 						break ;
 					}else{
-						System.out.println("다시 입력하세요");
+						JOptionPane.showMessageDialog(null, "아이디가 일치하지 않습니다. 다시 입력해주세요");
 					}
 				}
 				bmi.setUid(tempUid);
-				// member.getUid().equals(tempUid);
-				System.out.println("몸무게, 키?");
-				bmi.setWeight(s.nextDouble());
-				bmi.setHeight(s.nextDouble());
-				bmiResult = bmi.calcBmi(bmi.getWeight(), bmi.getHeight());
-				System.out.printf("%s(%s) %s\n", member.getName(), gender, bmiResult);
+				bmi.setWeight(Integer.parseInt(JOptionPane.showInputDialog("몸무게")));
+				bmi.setHeight(Integer.parseInt(JOptionPane.showInputDialog("키") ));
+				/*bmiResult = bmi.calcBmi(bmi.getWeight(), bmi.getHeight());*/
+				JOptionPane.showMessageDialog(null, member.getName() + gender + bmi.calcBmi(bmi.getWeight(), bmi.getHeight()));
 				// 한석규(남) 과체중
 				break;
 			
-			case 3:
+			case "3":
 				// lotto
 				break;
-			case 4:
+			case "4":
 				ReportCard card = new ReportCard() ;
-				System.out.print("Name:");
-				card.setName(s.next());
+				card.setName(JOptionPane.showInputDialog("이름"));
 				int score=0, total=0; 
 				for(i=0; i<6; i++){
-					System.out.println("Score: ");
-					System.out.println("If you want to stop, Type -1");
-					System.out.println("If the number of Subject is 6, Auto quit!");
-					score = s.nextInt();
+					score = Integer.parseInt(JOptionPane.showInputDialog("점수(6과목 점수를 연속으로 입력해 주세요)"));
 					total += score;
 				}
 				card.setTotal(total);
 				card.setAverage(total/6);
 				card.calcGrade();
 				
-				System.out.printf("%s: %d\n","Name", card.getName());
+				JOptionPane.showInternalMessageDialog(null, "Name:" + card.getName() + "Total:" + card.getTotal() + "Average:" + card.getAverage() + "Grade:" + card.getGrade());
+				/*System.out.printf("%s: %d\n","Name", card.getName());
 				System.out.printf("%s: %d\n", "Total", card.getTotal());
 				System.out.printf("%s: %d\n", "Average:", card.getAverage());
-				System.out.printf("%s: %d", "Grade:", card.getGrade());
+				System.out.printf("%s: %d", "Grade:", card.getGrade());*/
 				break;
 				
-			case 5: 
+			case "5": 
 				
 				break;
 				}
