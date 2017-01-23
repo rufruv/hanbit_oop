@@ -1,7 +1,5 @@
 package test;
 
-import java.util.Scanner;
-
 public class ReportCard {
 	private int total, average, score, count ; 
 	private String grade, name ; 

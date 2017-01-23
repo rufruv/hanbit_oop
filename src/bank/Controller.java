@@ -13,14 +13,12 @@ public class Controller {
 		while(true){
 			/*String option = JOptionPane.showInputDialog("0.종료 1.회원등록 2.통장개설 3.입금 4.출금 5.조회 6.해지");*/
 			/*int opt = Integer.parseInt(option);  // String을 int로 바꿔주는거 (""를 벗겨주는거)
-			String opt2 = String.valueOf(opt);   // int를 String으로 바꿔주는거 (""를 씌어주는거)
-*/			/* int flag = s.nextInt(); */
+			String opt2 = String.valueOf(opt);   // int를 String으로 바꿔주는거 (""를 씌어주는거)*/
+			/* int flag = s.nextInt(); */
 			switch(JOptionPane.showInputDialog("0.종료 1.회원등록 2.통장개설 3.입금 4.출금 5.조회 6.해지")){
 			case "0": return;
 			case "1": 
 				mem = new Member(); // initialize (값이 입력될수 있는 구조물이 들어선 상태)
-				/*String str = JOptionPane.showInputDialog("아이디);
-*/				/*System.out.println("아이디, 이름?");*/
 				mem.setUid(JOptionPane.showInputDialog("아이디"));
 				mem.setName(JOptionPane.showInputDialog("이름"));
 				while(true){
@@ -50,13 +48,10 @@ public class Controller {
 				 * 잔액 : ￦ 0
 				 */
 				while(true){
-					/*JOptionPane.showInputDialog("아이디?");
-					System.out.println("아이디?");*/
 					uid = JOptionPane.showInputDialog("아이디?");
 					if(mem.getUid().equals(uid)){
 						break;
 					}else{
-						/*System.out.println("주민번호를 다시 입력하시오");*/
 						JOptionPane.showMessageDialog(null, "아이디를 다시 입력하시오");
 					}
 				}

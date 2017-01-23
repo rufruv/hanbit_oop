@@ -59,11 +59,14 @@ public class Account {
 	public String getCreateDate(){
 		return createDate;
 	}
+	
+	//입금
 	public void deposit(int money){
 		this.money+=money;
 	}
+	//출금
 	public void withdraw(int money){
-		
+		this.money=(this.money>money)?this.money-money:this.money;
 	}
 }
 
