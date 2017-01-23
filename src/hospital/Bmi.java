@@ -1,15 +1,8 @@
-package test;
+package hospital;
 
-public class Bmi {
-	private String uid ;
-	private double weight, height ;
+public abstract class Bmi {
+	protected double weight, height ;
 	
-	public void setUid(String uid){
-		this.uid = uid ;
-	}
-	public String getUid(){
-		return uid ;
-	}
 	public void setWeight(double weight){
 		this.weight = weight;
 	}
@@ -25,7 +18,8 @@ public class Bmi {
 	}
 	
 	// setter를 생략하면, readOnly 파일( 수정할수 없고, 읽을수만 있는!!! )
-	public String calcBmi(double weight, double height){
+	public abstract String calcBmi(double weight, double height);
+	/*public String calcBmi(double weight, double height){
 	    String bmiResult = "";
 		double bmi = weight / (height * height) ;
 		if (bmi > 30.0) {
@@ -40,5 +34,5 @@ public class Bmi {
 			bmiResult = "저체중";
 		}
 		return bmiResult ;
-	}
+	}*/
 }

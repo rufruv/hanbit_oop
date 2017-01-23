@@ -40,7 +40,7 @@ public class Controller {
 				String uid = "";
 				int money = 0 ;
 				String accountType = "저축예금";
-				account = new Account(uid, accountType, money);
+				account = new WageAccount(uid, accountType, money);
 				/* [한빛뱅크] 
 				 * 계좌번호 : 123456
 				 * 예금종류 : 저축예금 송상훈 
@@ -60,13 +60,17 @@ public class Controller {
 				sb.append("["+Account.BANK_NAME+"]\n");
 				sb.append("계좌번호: " + account.getAccountNo()+"\n");
 				sb.append("예금종류: " + account.getAccountType()+mem.getName()+"\n");
-				sb.append("가입일: " + account.today()+"\n");
+				sb.append("가입일: " + account.getCreateDate()+"\n");
 				sb.append("잔액: " + account.getMoney()+"\n");
 				/*System.out.println(sb.toString());*/
 				JOptionPane.showMessageDialog(null, sb.toString());
 				break;
-			case "3": break;
+			case "3":
+				account.deposit(Integer.parseInt(JOptionPane.showInputDialog("얼마를 입금하시겠습니까?")));
+				JOptionPane.showMessageDialog(null, account.getMoney());
+				break;
 			case "4": break;
+				
 			case "5": break;
 			case "6": break;
 			}

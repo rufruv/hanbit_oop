@@ -2,7 +2,7 @@ package phone;
 
 public class Phone{
 	public final static String KIND="삼성전화기";
-	private String receiver, call;
+	protected String receiver, call;
 	
 	public void setReceiver(String receiver){
 		this.receiver = receiver;

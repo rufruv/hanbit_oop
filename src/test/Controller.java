@@ -2,16 +2,15 @@ package test;
 
 import javax.swing.JOptionPane;
 
+import hospital.Bmi;
+
 public class Controller {
 
 	public void startTest() {
 		// local variable 반드시 initialize
 		int i = 0;
 		String ssn = "";   // local variable
-		String gender = "";
-		String tempUid = "";
 		Member member = null;
-		Bmi bmi = null;
 		ReportCard card =null;
 
 		while (true) {
@@ -35,24 +34,7 @@ public class Controller {
 				member.setSsn(ssn);
 				JOptionPane.showMessageDialog(null, member.getName() + "(" + member.calcGender(ssn) + ")"); // 한석규(남)
 				break;
-			case "2":
-				bmi = new Bmi();
-				while (true) {
-					tempUid = JOptionPane.showInputDialog("아이디");
-					if (member.getUid().equals(tempUid)) {
-						break;
-					} else {
-						JOptionPane.showMessageDialog(null, "아이디가 일치하지 않습니다. 다시 입력해주세요");
-					}
-				}
-				bmi.setUid(tempUid);
-				bmi.setWeight(Integer.parseInt(JOptionPane.showInputDialog("몸무게")));
-				bmi.setHeight(Integer.parseInt(JOptionPane.showInputDialog("키")));
-				/* bmiResult = bmi.calcBmi(bmi.getWeight(), bmi.getHeight()); */
-				JOptionPane.showMessageDialog(null,
-						member.getName() + gender + bmi.calcBmi(bmi.getWeight(), bmi.getHeight()));
-				// 한석규(남) 과체중
-				break;
+			
 
 			case "3":
 				// lotto
