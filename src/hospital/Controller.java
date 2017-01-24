@@ -3,12 +3,12 @@ package hospital;
 import javax.swing.JOptionPane;
 
 public class Controller {
-	public final static String EXE_OPTION = "0.EXIT\n" + "1.REG-DOCTOR\n" + "2.REG-NURSE\n" + "3.REG-PATIENT\n"
-			+ "4.CHEK-BMI\n";
+	public final static String EXE_OPTION = "0.EXIT\n" + "1.REG-DOCTOR\n" + "2.REG-NURSE\n" + "3.REG-PATIENT\n" + "4.CHEK-BMI\n";
 
 	public final static String DOC_SPEC = "INPUT AS 의사ID, 담당진료과목, 성명, 주민번호, 전화번호, 이메일, 직급";
 	public final static String NUR_SPEC = "INPUT AS 간호사ID, 담당진료과목, 성명, 주민번호, 전화번호, 이메일, 직급";
 	public final static String PAT_SPEC = "INPUT AS 환자ID, 간호사ID, 의사ID, 성명, 주민번호, 전화번호, 주소, 이메일, 직업";
+	public final static String BMI_SPEC = "INPUT AS 몸무게, 키";
 
 	public void startHospital() {
 		while (true) {
@@ -46,36 +46,22 @@ public class Controller {
 				String[] patInfoArr = patInfo.split(",");
 				pat.setPatUid(Integer.parseInt(patInfoArr[0]));
 				pat.setNurUid(Integer.parseInt(patInfoArr[1]));
-				pat.setDocUid(Integer.parseInt(patInfoArr[1]));
+				pat.setDocUid(Integer.parseInt(patInfoArr[2]));
 				pat.setName(patInfoArr[3]);
 				pat.setSsn(patInfoArr[4]);
-				pat.setPhone(patInfoArr[5]);
-				pat.setAddr(patInfoArr[7]);
-				pat.setEmail(patInfoArr[8]);
-				pat.setPatJob(patInfoArr[9]);
+				pat.setAddr(patInfoArr[5]);
+				pat.setPhone(patInfoArr[6]);
+				pat.setEmail(patInfoArr[7]);
+				pat.setPatJob(patInfoArr[8]);
 				JOptionPane.showMessageDialog(null, pat.toString());
 				break;
 			case "4":
-				Bmi bmi = new Bmi();
-				while (true) {
-					tempUid = JOptionPane.showInputDialog("아이디");
-					if (member.getUid().equals(tempUid)) {
-						break;
-					} else {
-						JOptionPane.showMessageDialog(null, "아이디가 일치하지 않습니다. 다시 입력해주세요");
-					}
-				}
-				bmi.setUid(tempUid);
-				bmi.setWeight(Integer.parseInt(JOptionPane.showInputDialog("몸무게")));
-				bmi.setHeight(Integer.parseInt(JOptionPane.showInputDialog("키")));
-				 bmiResult = bmi.calcBmi(bmi.getWeight(), bmi.getHeight()); 
-				JOptionPane.showMessageDialog(null,
-						member.getName() + gender + bmi.calcBmi(bmi.getWeight(), bmi.getHeight()));
-				// 한석규(남) 과체중
-*/				break;
+				Bmi bmi= new Bmi();
+				bmi.setHeight(Double.parseDouble(JOptionPane.showInputDialog("What Weight?")));
+				bmi.setHeight(Double.parseDouble(JOptionPane.showInputDialog("What Height?")));
+				JOptionPane.showMessageDialog(null, bmi.toString());
+				break;
 			}
-
 		}
 	}
-
 }

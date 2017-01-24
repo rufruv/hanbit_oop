@@ -26,6 +26,6 @@ public class Nurses extends Member{
 							+"성별: %s\n"
 							+"전화번호:%s\n"
 							+"이메일: %s\n"
-							+"직급: %s\n", nurUid, majorJob, name, getGender(ssn), phone, email, nurPosition);
+							+"직급: %s\n", nurUid, majorJob, name, calcGender(ssn), phone, email, nurPosition);
 	}
 }

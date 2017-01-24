@@ -1,27 +1,24 @@
 package hospital;
 
-public abstract class Bmi {
-	protected double weight, height ;
+public class Bmi extends Treatment {
+	private double weight, height;
 	
 	public void setWeight(double weight){
 		this.weight = weight;
 	}
-	public double getWeight(){
-		return weight ;
+	public double getWeight() {
+		return weight;
 	}
-	
-	public void setHeight(double height){
+	public void setHeight(double height) {
 		this.height = height;
 	}
-	public double getHeight(){
+	public double getHeight() {
 		return height;
 	}
-	
-	// setter를 생략하면, readOnly 파일( 수정할수 없고, 읽을수만 있는!!! )
-	public abstract String calcBmi(double weight, double height);
-	/*public String calcBmi(double weight, double height){
-	    String bmiResult = "";
-		double bmi = weight / (height * height) ;
+	@Override
+	public String treat() {
+		String bmiResult = "";
+		double bmi = weight / (height/10 * height/10) ;
 		if (bmi > 30.0) {
 			bmiResult = "고도비만";
 		} else if (bmi > 25.0) {
@@ -34,5 +31,9 @@ public abstract class Bmi {
 			bmiResult = "저체중";
 		}
 		return bmiResult ;
-	}*/
+	}
+	@Override
+	public String toString() {
+		return String.format("BMI지수: %s", treat());
+	}
 }

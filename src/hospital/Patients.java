@@ -21,6 +21,6 @@ public class Patients extends Member {
 							+ "전화번호:%s\n"
 							+ "주소: %s\n"
 							+ "이메일: %s\n"
-							+ "직업: %s\n", patUid, nurUid, docUid, name, getGender(ssn), ssn, phone, addr, email, patJob);
+							+ "직업: %s\n", patUid, nurUid, docUid, name, calcGender(ssn), ssn, phone, addr, email, patJob);
 	}
 }

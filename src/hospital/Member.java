@@ -52,7 +52,7 @@ public class Member {
 	public int getPatUid(){
 		return patUid;
 	}
-	public String getGender(String ssn) {
+	public String calcGender(String ssn) {
 		String gender = "";
 		char ch = ssn.charAt(7);
 		if (ch == '0' || ch == '7' || ch == '8' || ch == '9') {
