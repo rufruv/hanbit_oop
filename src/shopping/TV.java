@@ -17,7 +17,8 @@ public class TV extends Product{
 	}
 	@Override
 	public String toString() {
-		return "TV [name=" + name + ", price=" + super.getPrice() + "]";
+		/*return "TV [name=" + name + ", price=" + super.getPrice() + "]";*/
+		return String.format("품명: %s ----- 금액: %d", getName(), super.getPrice());
 	}
 	
 	

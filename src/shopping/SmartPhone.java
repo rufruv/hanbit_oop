@@ -6,6 +6,10 @@ public class SmartPhone extends Product{
 	public SmartPhone(){
 		super(300);
 	}
+	@Override
+	public String getName() {
+		return "스마트폰";
+	}
 
 	public String getGiga() {
 		return giga;
@@ -16,6 +20,7 @@ public class SmartPhone extends Product{
 
 	@Override
 	public String toString() {
-		return "SmartPhone [name=" + name + ", price=" + super.getPrice() + "]";
+		/*return "SmartPhone [name=" + name + ", price=" + super.getPrice() + "]";*/
+		return String.format("품명: %s ----- 금액: %d", getName(), super.getPrice());
 	}
 }

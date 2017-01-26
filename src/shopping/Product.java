@@ -8,7 +8,7 @@ public class Product {
 		return price;
 	}
 
-	public Product(int Price) {
+	public Product(int price) {
 		this.price = price;
 	}
 

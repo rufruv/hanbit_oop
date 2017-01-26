@@ -6,7 +6,10 @@ public class Computer extends Product {
 	public Computer (){
 		super(300);
 	}
-
+	@Override
+	public String getName() {
+		return "컴퓨터";
+	}
 	public String getRam() {
 		return ram;
 	}
@@ -16,7 +19,8 @@ public class Computer extends Product {
 
 	@Override
 	public String toString() {
-		return "Computer [name=" + name + ", price=" + super.getPrice() + "]";
+		/*return "Computer [name=" + name + ", price=" + super.getPrice() + "]";*/
+		return String.format("품명: %s ----- 금액: %d", getName(), super.getPrice());
 	}
 	
 	
