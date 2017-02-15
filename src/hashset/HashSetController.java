@@ -8,7 +8,7 @@ public class HashSetController {
 		for(String i:arr){
 			set.add(i);
 		}
-/*		HashSet<String> set= new HashSet<String>();*/
+
 		for(int i=0;i<arr.length;i++){
 			System.out.printf("%s,", arr[i]);
 		}
@@ -19,14 +19,11 @@ public class HashSetController {
 		System.out.println("SET: " + set.toString());
 		System.out.println("삭제를 원하는 값을 입력하세요");
 		String del = s.next();
-		// aaa는 없는 값입니다. 
 		String res ="";
 		for(int i=0; i<arr.length; i++){
 			if(del.equals(arr[i])){
-				int count= i+1;
-				del=arr[count-1];
-				arr[count-1]=null;
-				count--;
+				del=arr[arr.length-1];
+				arr[arr.length-1]=null;
 			}else{
 				res=del+"는 없는값입니다.";
 			}

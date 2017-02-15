@@ -3,8 +3,8 @@ package array;
 public class ArrayController {
 	public static void main(String[] args) {
 		ArrayService service = new ArrayServiceImpl();
-		service.add();
-		
+		String[] arr = new String[5];
+		arr=service.add();
 		System.out.printf("FindOne: %s\n"
 			        	+ "FindSome: %s\n"
 				        + "FindAll: %s\n"
